@@ -3,6 +3,24 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+// function App() {
+//   // siempre nombre de variable va acompañado de su "seter"=> usuario, setUsuario; que es una funcion de actualizacion
+//   const [count, setCount] = useState(0);
+
+//   const handleClick = () => {
+//     setCount(count + 1);
+//   };
+
+//   return (
+//     <>
+//       <section className="container">
+//         <h1>Contador {count}</h1>
+//         <button onClick={handleClick}>+</button>
+//       </section>
+//     </>
+//   );
+// }
+
 function App() {
   // 🔹 Estados
   const [nombre, setNombre] = useState(""); // Guarda el texto que escribe el usuario
