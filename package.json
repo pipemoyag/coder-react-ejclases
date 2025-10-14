@@ -1,7 +1,8 @@
 {
   "name": "ejemplo-reactjs",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
+  "homepage": "https://https://pipemoyag.github.io/coder-react-ejclases",
   "type": "module",
   "scripts": {
     "dev": "vite",
