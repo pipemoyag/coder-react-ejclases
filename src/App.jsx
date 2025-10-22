@@ -4,43 +4,68 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Button from "./components/Button";
 import Counter from "./components/Counter";
+import ItemListContainer from "./components/ItemListContainer";
 
-// EJ 2.4
+// #### CLASE 3 ####
+// Repaso promesas
+// const miPromesa = (a) =>
+//   new Promise((resolve, reject) => {
+//     if (a) {
+//       resolve("ok");
+//     } else {
+//       reject("falto el parametro");
+//     }
+//   });
+
+// //then y catch
+// miPromesa(5)
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
 function App() {
-  const [time1, setTime1] = useState(0);
-  const [time2, setTime2] = useState(0);
-
-  useEffect(() => {
-    // ❌ Este usa "time1 + 1" y se congela
-    const id1 = setInterval(() => {
-      setTime1(time1 + 1); // time1 está "cerrado" en 0
-    }, 1000);
-
-    // ✅ Este usa la versión funcional y funciona bien
-    const id2 = setInterval(() => {
-      setTime2((prev) => prev + 1); // usa el valor actual
-    }, 1000);
-
-    return () => {
-      clearInterval(id1);
-      clearInterval(id2);
-    };
-  }, []); // 👈 el arreglo vacío hace que use el valor inicial de "time1"
-
   return (
-    <div style={{ fontFamily: "sans-serif", textAlign: "center" }}>
-      <h2>Comparación entre las dos formas</h2>
-      <p>
-        ❌ Usando <code>setTime(time + 1)</code>: {time1}
-      </p>
-      <p>
-        ✅ Usando <code>{"setTime(prev => prev + 1)"}</code>: {time2}
-      </p>
-    </div>
+    <>
+      <ItemListContainer />
+    </>
   );
 }
 
-// CLASE 2
+// #### EJ 2.4 ####
+// function App() {
+//   const [time1, setTime1] = useState(0);
+//   const [time2, setTime2] = useState(0);
+
+//   useEffect(() => {
+//     // ❌ Este usa "time1 + 1" y se congela
+//     const id1 = setInterval(() => {
+//       setTime1(time1 + 1); // time1 está "cerrado" en 0
+//     }, 1000);
+
+//     // ✅ Este usa la versión funcional y funciona bien
+//     const id2 = setInterval(() => {
+//       setTime2((prev) => prev + 1); // usa el valor actual
+//     }, 1000);
+
+//     return () => {
+//       clearInterval(id1);
+//       clearInterval(id2);
+//     };
+//   }, []); // 👈 el arreglo vacío hace que use el valor inicial de "time1"
+
+//   return (
+//     <div style={{ fontFamily: "sans-serif", textAlign: "center" }}>
+//       <h2>Comparación entre las dos formas</h2>
+//       <p>
+//         ❌ Usando <code>setTime(time + 1)</code>: {time1}
+//       </p>
+//       <p>
+//         ✅ Usando <code>{"setTime(prev => prev + 1)"}</code>: {time2}
+//       </p>
+//     </div>
+//   );
+// }
+
+//  #### CLASE 2 ####
 // function App() {
 //   return (
 //     <>
