@@ -5,6 +5,16 @@ import "./App.css";
 import Button from "./components/Button";
 import Counter from "./components/Counter";
 import ItemListContainer from "./components/ItemListContainer";
+import TaskListContainer from "./components/TaskListContainer";
+
+// #### ACTIVIDAD PRACTICA 3.7 ####
+function App() {
+  return (
+    <>
+      <TaskListContainer />
+    </>
+  );
+}
 
 // #### CLASE 3 ####
 // Repaso promesas
@@ -22,13 +32,13 @@ import ItemListContainer from "./components/ItemListContainer";
 //   .then((res) => console.log(res))
 //   .catch((err) => console.log(err));
 
-function App() {
-  return (
-    <>
-      <ItemListContainer />
-    </>
-  );
-}
+// function App() {
+//   return (
+//     <>
+//       <ItemListContainer />
+//     </>
+//   );
+// }
 
 // #### EJ 2.4 ####
 // function App() {
@@ -97,6 +107,7 @@ function App() {
 //   );
 // }
 
+// #### EJ ESTADOS Y COMPONENTES ####
 // function App() {
 //   // 🔹 Estados
 //   const [nombre, setNombre] = useState(""); // Guarda el texto que escribe el usuario
