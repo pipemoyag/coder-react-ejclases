@@ -7,14 +7,30 @@ import Counter from "./components/Counter";
 import ItemListContainer from "./components/ItemListContainer";
 import TaskListContainer from "./components/TaskListContainer";
 
-// #### ACTIVIDAD PRACTICA 3.7 ####
+// #### CLASE 4 ####
+// REPASO FETCH
+// const response = fetch('https://rickandmortyapi.com/api/character')
+
+// response
+//   .then(res => res.json())
+//   .then(results => console.log(results))
+
 function App() {
   return (
     <>
-      <TaskListContainer />
+      <ItemListContainer />
     </>
   );
 }
+
+// // #### ACTIVIDAD PRACTICA 3.7 ####
+// function App() {
+//   return (
+//     <>
+//       <TaskListContainer />
+//     </>
+//   );
+// }
 
 // #### CLASE 3 ####
 // Repaso promesas
