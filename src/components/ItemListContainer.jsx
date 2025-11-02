@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { withLoading } from "../hoc/withLoading";
 import ItemList from "./ItemList";
+import Loader from "./Loader";
 
 // CLASE 3
 
@@ -91,25 +93,29 @@ const productos = [
 //  COMPONENTES CONTENEDORES/STATEFULL
 //  COMPONENTES DE VISTA
 
+// CLASE 4
+const ItemListWithLoading = withLoading(ItemList);
+
 function ItemListContainer({}) {
   const [items, setItems] = useState([]);
 
-  const obtenerProductos = () =>
-    new Promise((resolve, reject) => {
-      if (productos.length > 0) {
-        setTimeout(() => {
-          resolve(productos);
-        }, 3000);
-      } else {
-        reject("No se encontraron productos");
-      }
-    });
-
   useEffect(() => {
-    obtenerProductos().then((data) => setItems(data));
+    // CLASE 4
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setTimeout(() => {
+          setItems(data.products);
+        }, 3000);
+      });
   }, []);
 
-  return <ItemList items={items} />;
+  return (
+    // EJEMPLO CON HOK
+    // <ItemListWithLoading items={items} />
+    // EJEMPLO CON RENDER PROPS
+    <Loader items={items} render={() => <ItemList items={items} />} />
+  );
 }
 
 export default ItemListContainer;

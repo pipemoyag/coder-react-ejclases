@@ -5,19 +5,24 @@ import "./App.css";
 import Button from "./components/Button";
 import Counter from "./components/Counter";
 import ItemListContainer from "./components/ItemListContainer";
+import NavBarContainer from "./components/NavBarContainer";
 import TaskListContainer from "./components/TaskListContainer";
 
 // #### CLASE 4 ####
 // REPASO FETCH
 // const response = fetch('https://rickandmortyapi.com/api/character')
+// // const resultados = await response.json()
+
+// // console.log(resultados)
 
 // response
 //   .then(res => res.json())
-//   .then(results => console.log(results))
+//   .then(data => console.log(data))
 
 function App() {
   return (
     <>
+      <NavBarContainer />
       <ItemListContainer />
     </>
   );
