@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { withLoading } from "../hoc/withLoading";
 import ItemList from "./ItemList";
 import Loader from "./Loader";
+import { useParams } from "react-router";
 
 // CLASE 3
 
@@ -98,17 +99,18 @@ const ItemListWithLoading = withLoading(ItemList);
 
 function ItemListContainer({}) {
   const [items, setItems] = useState([]);
+  const { categoryName } = useParams(); // si estamos en ruta raíz, el categoryName es undefined
 
   useEffect(() => {
-    // CLASE 4
-    fetch("https://dummyjson.com/products")
+    // CLASE 5
+    const urlCategories = `https://dummyjson.com/products/category/${categoryName}`;
+    const urlBase = "https://dummyjson.com/products";
+    fetch(categoryName ? urlCategories : urlBase)
       .then((res) => res.json())
       .then((data) => {
-        setTimeout(() => {
-          setItems(data.products);
-        }, 3000);
+        setItems(data.products);
       });
-  }, []);
+  }, [categoryName]);
 
   return (
     // EJEMPLO CON HOK

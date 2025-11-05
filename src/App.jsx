@@ -4,9 +4,32 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Button from "./components/Button";
 import Counter from "./components/Counter";
-import ItemListContainer from "./components/ItemListContainer";
+import ItemListContainer from "./components/itemListContainer";
 import NavBarContainer from "./components/NavBarContainer";
 import TaskListContainer from "./components/TaskListContainer";
+
+import { BrowserRouter, Route, Routes } from "react-router";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+
+// #### CLASE 5 ####
+function App() {
+  return (
+    <BrowserRouter>
+      <NavBarContainer />
+      <Routes>
+        <Route path="/coder-react-ejclases/" element={<ItemListContainer />} />
+        <Route
+          path="/coder-react-ejclases/item/:id"
+          element={<ItemDetailContainer></ItemDetailContainer>}
+        />
+        <Route
+          path="/coder-react-ejclases/category/:categoryName"
+          element={<ItemListContainer></ItemListContainer>}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 // #### CLASE 4 ####
 // REPASO FETCH
@@ -19,14 +42,14 @@ import TaskListContainer from "./components/TaskListContainer";
 //   .then(res => res.json())
 //   .then(data => console.log(data))
 
-function App() {
-  return (
-    <>
-      <NavBarContainer />
-      <ItemListContainer />
-    </>
-  );
-}
+// function App() {
+//   return (
+//     <>
+//       <NavBarContainer />
+//       <ItemListContainer />
+//     </>
+//   );
+// }
 
 // // #### ACTIVIDAD PRACTICA 3.7 ####
 // function App() {

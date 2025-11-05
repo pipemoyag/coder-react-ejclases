@@ -1,10 +1,12 @@
+import { Link } from "react-router";
+
 function NavBar({ categories }) {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/coder-react-ejclases/">
           Ejemplo
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -31,9 +33,12 @@ function NavBar({ categories }) {
               <ul className="dropdown-menu">
                 {categories.map((category, index) => (
                   <li key={index}>
-                    <a className="dropdown-item" href="#">
+                    <Link
+                      className="dropdown-item"
+                      to={`/coder-react-ejclases/category/${category}`}
+                    >
                       {category}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
