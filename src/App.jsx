@@ -10,6 +10,7 @@ import TaskListContainer from "./components/TaskListContainer";
 
 import { BrowserRouter, Route, Routes } from "react-router";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import CartContainer from "./components/CartContainer";
 
 // #### CLASE 5 ####
 function App() {
@@ -26,6 +27,7 @@ function App() {
           path="/coder-react-ejclases/category/:categoryName"
           element={<ItemListContainer></ItemListContainer>}
         />
+        <Route path="/coder-react-ejclases/cart" element={<CartContainer />} />
       </Routes>
     </BrowserRouter>
   );

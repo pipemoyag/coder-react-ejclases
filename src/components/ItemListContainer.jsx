@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { withLoading } from "../hoc/withLoading";
 import ItemList from "./ItemList";
 import Loader from "./Loader";
 import { useParams } from "react-router";
+import { CartContext } from "../context/CartContext";
 
 // CLASE 3
 
@@ -100,6 +101,8 @@ const ItemListWithLoading = withLoading(ItemList);
 function ItemListContainer({}) {
   const [items, setItems] = useState([]);
   const { categoryName } = useParams(); // si estamos en ruta raíz, el categoryName es undefined
+  const context = useContext(CartContext);
+  console.log(context);
 
   useEffect(() => {
     // CLASE 5

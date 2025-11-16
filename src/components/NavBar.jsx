@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import CartWidget from "./CartWidget";
 
 function NavBar({ categories }) {
   return (
@@ -7,6 +8,11 @@ function NavBar({ categories }) {
         <Link className="navbar-brand" to="/coder-react-ejclases/">
           Ejemplo
         </Link>
+
+        {/* ---- Carrito visible solo en MOBILE ---- */}
+        <CartWidget className="d-lg-none me-2" />
+
+        {/* Botón Hamburguesa */}
         <button
           className="navbar-toggler"
           type="button"
@@ -18,6 +24,7 @@ function NavBar({ categories }) {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
@@ -30,6 +37,7 @@ function NavBar({ categories }) {
               >
                 Categorías
               </a>
+
               <ul className="dropdown-menu">
                 {categories.map((category, index) => (
                   <li key={index}>
@@ -44,6 +52,9 @@ function NavBar({ categories }) {
               </ul>
             </li>
           </ul>
+
+          {/* ---- Carrito visible solo en DESKTOP ---- */}
+          <CartWidget className="d-none d-lg-flex ms-2" />
         </div>
       </div>
     </nav>

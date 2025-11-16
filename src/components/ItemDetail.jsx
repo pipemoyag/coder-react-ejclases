@@ -1,23 +1,27 @@
+import ItemCount from "./ItemCount";
+
 function ItemDetail({ item }) {
   return (
     <div className="container my-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow-sm">
-            <img
-              src={item?.thumbnail}
-              className="card-img-top"
-              alt="Nombre del producto"
-            />
-            <div className="card-body">
-              <h4 className="card-title">{item.title}</h4>
-              <p className="card-text text-muted mb-2">${item.price}</p>
-              <p className="card-text">{item.description}</p>
-              <button className="btn btn-primary w-100">
-                Agregar al carrito
-              </button>
-            </div>
-          </div>
+      <div className="row align-items-center g-4">
+        {/* Columna izquierda: imagen */}
+        <div className="col-md-5 text-center">
+          <img
+            src={item?.thumbnail}
+            alt={item.title}
+            className="img-fluid rounded"
+            style={{ maxHeight: "400px", objectFit: "contain" }}
+          />
+        </div>
+
+        {/* Columna derecha: info */}
+        <div className="col-md-7">
+          <h2 className="fw-bold mb-3 fs-3">{item.title}</h2>
+          <p className="text-muted mb-4">{item.description}</p>
+          <h4 className="text-primary mb-4">${item.price}</h4>
+
+          {/* Contador simple */}
+          <ItemCount item={item}></ItemCount>
         </div>
       </div>
     </div>
