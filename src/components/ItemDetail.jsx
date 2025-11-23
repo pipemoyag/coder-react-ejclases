@@ -7,8 +7,8 @@ function ItemDetail({ item }) {
         {/* Columna izquierda: imagen */}
         <div className="col-md-5 text-center">
           <img
-            src={item?.thumbnail}
-            alt={item.title}
+            src={item?.image}
+            alt={item.name}
             className="img-fluid rounded"
             style={{ maxHeight: "400px", objectFit: "contain" }}
           />
@@ -16,7 +16,7 @@ function ItemDetail({ item }) {
 
         {/* Columna derecha: info */}
         <div className="col-md-7">
-          <h2 className="fw-bold mb-3 fs-3">{item.title}</h2>
+          <h2 className="fw-bold mb-3 fs-3">{item.name}</h2>
           <p className="text-muted mb-4">{item.description}</p>
           <h4 className="text-primary mb-4">${item.price}</h4>
 

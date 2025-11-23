@@ -4,6 +4,7 @@ import ItemList from "./ItemList";
 import Loader from "./Loader";
 import { useParams } from "react-router";
 import { CartContext } from "../context/CartContext";
+import { getProducts, getProductByCategory } from "../firebase/db";
 
 // CLASE 3
 
@@ -102,17 +103,21 @@ function ItemListContainer({}) {
   const [items, setItems] = useState([]);
   const { categoryName } = useParams(); // si estamos en ruta raíz, el categoryName es undefined
   const context = useContext(CartContext);
-  console.log(context);
+  // console.log(context);
 
   useEffect(() => {
-    // CLASE 5
-    const urlCategories = `https://dummyjson.com/products/category/${categoryName}`;
-    const urlBase = "https://dummyjson.com/products";
-    fetch(categoryName ? urlCategories : urlBase)
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data.products);
-      });
+    // CLASE 7
+    categoryName
+      ? getProductByCategory(categoryName, setItems)
+      : getProducts(setItems);
+    // // CLASE 5
+    // const urlCategories = `https://dummyjson.com/products/category/${categoryName}`;
+    // const urlBase = "https://dummyjson.com/products";
+    // fetch(categoryName ? urlCategories : urlBase)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setItems(data.products);
+    //   });
   }, [categoryName]);
 
   return (

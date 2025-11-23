@@ -24,19 +24,19 @@ const CartContainer = () => {
                 >
                   {/* Imagen */}
                   <img
-                    src={item.thumbnail}
+                    src={item.image}
                     className="img-thumbnail"
                     style={{
                       width: "80px",
                       height: "80px",
                       objectFit: "cover",
                     }}
-                    alt={item.title}
+                    alt={item.name}
                   />
 
                   {/* Info */}
                   <div className="flex-grow-1 mx-3">
-                    <h5 className="mb-1">{item.title}</h5>
+                    <h5 className="mb-1">{item.name}</h5>
                     <p className="mb-1 text-muted">
                       Precio: ${item.price.toLocaleString("es-CL")}
                     </p>
