@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import toast from "react-hot-toast";
 
 // POR AHORA ES SOLO 1 COMPONENTE. SI MAS ADELANTE EL CONTADOR SE CONECTA AL CONTEXTO DEL CARRITO O
 // A UNA BASE DE DATOS, Y SE TENGAN QUE HACER VALIDACIONES, SE SEPARARA USANDO ItemCountContainer
@@ -21,7 +22,10 @@ function ItemCount({ item }) {
     }
   };
 
-  const handleAddToCart = () => addToCart({ ...item, count: counter });
+  const handleAddToCart = () => {
+    addToCart({ ...item, count: counter });
+    toast("se agrego el producto al carrito");
+  };
 
   return (
     <>

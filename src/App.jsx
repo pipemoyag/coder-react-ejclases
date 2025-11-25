@@ -12,6 +12,8 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import CartContainer from "./components/CartContainer";
 
+import toast, { Toaster } from "react-hot-toast";
+
 // #### CLASE 5 ####
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         />
         <Route path="/coder-react-ejclases/cart" element={<CartContainer />} />
       </Routes>
+      <Toaster />
     </BrowserRouter>
   );
 }
