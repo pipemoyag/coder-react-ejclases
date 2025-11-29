@@ -3,7 +3,7 @@ import { useCart } from "../context/useCart";
 import { createOrder } from "../firebase/db";
 
 const Checkout = () => {
-  const { getTotal, cart } = useCart();
+  const { getTotalPrice, cart } = useCart();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevenir comportamiento por defecto, para que no se recargue la página
@@ -15,7 +15,7 @@ const Checkout = () => {
 
     const order = {
       buyer: { email, nombre, celular },
-      total: getTotal(),
+      total: getTotalPrice(),
       items: cart,
       date: serverTimestamp(),
     };

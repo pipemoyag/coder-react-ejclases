@@ -2,9 +2,10 @@ import { Link } from "react-router";
 import { useCart } from "../context/useCart";
 
 const CartContainer = () => {
-  const { cart, clearCart, getTotal } = useCart();
+  const { cart, clearCart, getTotalPrice, updateQuantity, removeFromCart } =
+    useCart();
 
-  const total = getTotal();
+  const total = getTotalPrice();
   return (
     <div className="container my-5">
       <h2 className="mb-4">Carrito de Compras</h2>
@@ -24,25 +25,59 @@ const CartContainer = () => {
                   className="list-group-item d-flex align-items-center justify-content-between"
                 >
                   {/* Imagen */}
-                  <img
-                    src={item.thumbnail}
-                    className="img-thumbnail"
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      objectFit: "cover",
-                    }}
-                    alt={item.name}
-                  />
+                  <Link to={`/coder-react-ejclases/item/${item.id}`}>
+                    <img
+                      src={item.thumbnail}
+                      className="img-thumbnail"
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        objectFit: "cover",
+                        cursor: "pointer",
+                      }}
+                      alt={item.title}
+                    />
+                  </Link>
 
                   {/* Info */}
                   <div className="flex-grow-1 mx-3">
-                    <h5 className="mb-1">{item.title}</h5>
+                    <Link
+                      to={`/coder-react-ejclases/item/${item.id}`}
+                      className="text-decoration-none text-dark hover-underline"
+                    >
+                      <h5 className="mb-1">{item.title}</h5>
+                    </Link>
                     <p className="mb-1 text-muted">
                       Precio: ${item.price.toLocaleString("es-CL")}
                     </p>
 
-                    <small>Cantidad: {item.count}</small>
+                    <div className="d-flex align-items-center gap-2">
+                      <button
+                        className="btn btn-outline-secondary btn-sm"
+                        onClick={() =>
+                          item.count === 1
+                            ? removeFromCart(item.id)
+                            : updateQuantity(item.id, item.count - 1)
+                        }
+                      >
+                        -
+                      </button>
+
+                      <span className="mx-2">{item.count}</span>
+
+                      <button
+                        className="btn btn-outline-secondary btn-sm"
+                        onClick={() => updateQuantity(item.id, item.count + 1)}
+                        disabled={item.count >= item.stock}
+                        title={
+                          item.count >= item.stock
+                            ? "No quedan más unidades disponibles"
+                            : "Agregar una unidad"
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
 
                   {/* Subtotal */}
@@ -53,7 +88,7 @@ const CartContainer = () => {
                   {/* Botón eliminar */}
                   <button
                     className="btn btn-outline-danger btn-sm"
-                    // onClick={() => removeItem(item.id)}
+                    onClick={() => removeFromCart(item.id)}
                   >
                     <i className="bi bi-trash"></i>
                   </button>

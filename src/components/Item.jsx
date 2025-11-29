@@ -12,13 +12,12 @@ function Item({ item }) {
           <h5 className="card-title">{item.title}</h5>
           <p className="card-text">{item.description}</p>
           <p className="fw-bold">${item.price}</p>
-          <button
+          <Link
+            to={`/coder-react-ejclases/item/${item.id}`}
             className="btn btn-primary"
-            onClick={() => navigate(`/coder-react-ejclases/item/${item.id}`)}
-            // onClick={uploadDataToFirestore}
           >
             Ver más
-          </button>
+          </Link>
         </div>
       </div>
     </div>
