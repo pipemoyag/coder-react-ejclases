@@ -13,6 +13,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import CartContainer from "./components/CartContainer";
 
 import toast, { Toaster } from "react-hot-toast";
+import Checkout from "./components/Checkout";
 
 // #### CLASE 5 ####
 function App() {
@@ -30,6 +31,7 @@ function App() {
           element={<ItemListContainer></ItemListContainer>}
         />
         <Route path="/coder-react-ejclases/cart" element={<CartContainer />} />
+        <Route path="/coder-react-ejclases/checkout" element={<Checkout />} />
       </Routes>
       <Toaster />
     </BrowserRouter>

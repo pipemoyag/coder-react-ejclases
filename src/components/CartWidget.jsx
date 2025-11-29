@@ -1,9 +1,10 @@
 import { Link } from "react-router";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { useCart } from "../context/useCart";
 
 function CartWidget({ className }) {
-  const { getCartQuantity } = useContext(CartContext);
+  const { getCartQuantity } = useCart();
   const quantity = getCartQuantity();
   return (
     <Link

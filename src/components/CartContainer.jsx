@@ -1,9 +1,10 @@
+import { Link } from "react-router";
 import { useCart } from "../context/useCart";
 
 const CartContainer = () => {
-  const { cart, clearCart } = useCart();
+  const { cart, clearCart, getTotal } = useCart();
 
-  const total = cart.reduce((acc, item) => acc + item.price * item.count, 0);
+  const total = getTotal();
   return (
     <div className="container my-5">
       <h2 className="mb-4">Carrito de Compras</h2>
@@ -24,7 +25,7 @@ const CartContainer = () => {
                 >
                   {/* Imagen */}
                   <img
-                    src={item.image}
+                    src={item.thumbnail}
                     className="img-thumbnail"
                     style={{
                       width: "80px",
@@ -36,7 +37,7 @@ const CartContainer = () => {
 
                   {/* Info */}
                   <div className="flex-grow-1 mx-3">
-                    <h5 className="mb-1">{item.name}</h5>
+                    <h5 className="mb-1">{item.title}</h5>
                     <p className="mb-1 text-muted">
                       Precio: ${item.price.toLocaleString("es-CL")}
                     </p>
@@ -75,9 +76,12 @@ const CartContainer = () => {
                   <strong>${total.toLocaleString("es-CL")}</strong>
                 </div>
 
-                <button className="btn btn-primary w-100 mb-2">
-                  Finalizar Compra
-                </button>
+                <Link
+                  className="btn btn-primary w-100 mb-2"
+                  to={"/coder-react-ejclases/checkout"}
+                >
+                  Checkout
+                </Link>
 
                 <button
                   className="btn btn-outline-danger w-100"

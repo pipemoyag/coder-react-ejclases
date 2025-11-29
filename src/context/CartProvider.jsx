@@ -11,13 +11,18 @@ function CartProvider({ children }) {
 
   const clearCart = () => setCart([]);
 
-  return (
-    <CartContext.Provider
-      value={{ getCartQuantity, addToCart, cart, clearCart }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
+  const getTotal = () =>
+    cart.reduce((acc, item) => acc + item.price * item.count, 0);
+
+  const value = {
+    getCartQuantity,
+    addToCart,
+    cart,
+    clearCart,
+    getTotal,
+  };
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export default CartProvider;
